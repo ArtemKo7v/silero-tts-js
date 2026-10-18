@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Silero TTS in JavaScript</title>
+<style>
+:root { --fg: #1d1d1f; --muted: #6b6b70; --line: #d9d9de; --bg: #fafafa; --card: #fff; --accent: #2f6fde; --error: #c62828; }
+@media (prefers-color-scheme: dark) {
+  :root { --fg: #ececf0; --muted: #a0a0a8; --line: #3a3a40; --bg: #18181b; --card: #222226; --accent: #6ea0ff; --error: #ff7a7a; }
+}
+* { box-sizing: border-box; }
+body { font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--fg); background: var(--bg); margin: 0; }
+main { max-width: 860px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+.muted { color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin: 16px 0; }
+textarea { width: 100%; min-height: 180px; resize: vertical; font: inherit; color: inherit; background: transparent;
+           border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
+select, button { font: inherit; border-radius: 8px; padding: 7px 14px; border: 1px solid var(--line); background: var(--card); color: inherit; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button:disabled { opacity: .5; }
+progress { width: 100%; height: 6px; margin-top: 12px; }
+audio { width: 100%; margin-top: 8px; }
+#log { font-size: 14px; padding-left: 20px; max-height: 280px; overflow: auto; }
+#log li { margin: 2px 0; }
+#log .error { color: var(--error); }
+a { color: var(--accent); }
+pre { white-space: pre-wrap; font-size: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Silero TTS in JavaScript</h1>
+  <p class="muted">Russian text to speech in your browser: contextual number expansion,
+    Silero Stress, and Silero TTS v5_cis_base with 29 voices. Processing stays on your device.</p>
+
+  <div class="card">
+    <textarea id="text" aria-label="Russian text to synthesize">Старый замок на холме был виден издалека. Ключ застрял в замке, и замок пришлось сломать.
+
+В 2024 году мы впервые поехали на море. Длинный осенний вечер тянулся медленно, и только дождь стучал по крыше.
+
+12 апреля 1961 года, в 9:07 по московскому времени, стартовал корабль «Восток». В XIX веке о таком не мечтали.
+
+Почему ты молчишь? Ответь мне хоть что-нибудь!</textarea>
+    <div class="row">
+      <label>Voice <select id="voice"></select></label>
+      <label title="Voice pitch multiplier">Pitch
+        <select id="pitch">
+          <option value="0.75" data-level="-2">−2 (−25%)</option>
+          <option value="0.85" data-level="-1">−1 (−15%)</option>
+          <option value="1" data-level="0" selected>0</option>
+          <option value="1.15" data-level="+1">+1 (+15%)</option>
+          <option value="1.25" data-level="+2">+2 (+25%)</option>
+        </select></label>
+      <button id="speak" class="primary" disabled>Speak</button>
+      <button id="stop" disabled>Stop</button>
+      <button id="selftest" hidden>Check against Python</button>
+    </div>
+    <progress id="progress" value="0" max="1"></progress>
+    <div id="status" class="muted" role="status">Loading…</div>
+  </div>
+
+  <div class="card" id="result" hidden>
+    <audio id="audio" controls></audio>
+    <div class="row"><a id="download" href="#">Download WAV</a></div>
+  </div>
+
+  <div class="card">
+    <div class="muted">Model input (stress marked by + before vowels; numbers and Latin letters expanded):</div>
+    <ol id="log"></ol>
+    <pre id="selftest-result"></pre>
+  </div>
+
+  <p class="muted">Models: <a href="https://github.com/snakers4/silero-models">Silero TTS</a>
+    v5_cis_base and <a href="https://github.com/snakers4/silero-stress">Silero Stress</a> 1.5;
+    <a href="https://onnxruntime.ai">ONNX Runtime Web</a> 1.20.1. All MIT licensed.
+    An independent JavaScript port. Offline files use one WASM thread; the local server enables multiple threads.</p>
+</main>
+<!-- PAYLOADS -->
+<!-- SCRIPTS -->
+<!-- LICENSES -->
+</body>
+</html>

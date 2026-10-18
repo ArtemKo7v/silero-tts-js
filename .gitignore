@@ -1,0 +1,17 @@
+# Generated assets and local source models
+/models/*
+!/models/README.md
+!/models/checksums.sha256
+/vendor/*
+!/vendor/README.md
+/dist/*
+!/dist/README.md
+/inputs/
+/.work/
+/.venv/
+__pycache__/
+*.py[cod]
+node_modules/
+.DS_Store
+Thumbs.db
+TASK.md

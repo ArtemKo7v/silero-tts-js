@@ -1,0 +1,8 @@
+# Reference CPU export environment; browser packaging does not use these packages.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1+cpu
+numpy==2.5.4
+onnx==1.23.2
+onnxruntime==1.31.0
+onnxscript==0.7.2
+silero-stress==1.5
