@@ -4,6 +4,8 @@ This code turns Russian text into speech directly in your users' browsers.
 Audio is generated on the client's device, so you don't need a server to generate
 speech, and the text stays on the device.
 
+**Try the demo:** [Generate speech in your browser](https://research.potochka.com/silero/).
+
 Just point your AI coding agent at this repository and ask it to add text to speech
 to your project. It can read the code, examples, and instructions below to work out
 how to use it.
