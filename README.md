@@ -1,10 +1,15 @@
 # Silero TTS JS
 
-This code turns Russian text into speech directly in your users' browsers.
+This code turns text into speech directly in your users' browsers.
 Audio is generated on the client's device, so you don't need a server to generate
 speech, and the text stays on the device.
 
-**Try the demo:** [Generate speech in your browser](https://research.potochka.com/silero/).
+**Try the demo:** 
+ - [Russian, v5_cis_base](https://research.potochka.com/silero/).
+ - [English, v3_en](https://research.potochka.com/silero/en.html).
+
+The code in this repository uses the `v5_cis_base` model, but you can use any of the 
+publicly available [Silero models](https://github.com/snakers4/silero-models). 
 
 Just point your AI coding agent at this repository and ask it to add text to speech
 to your project. It can read the code, examples, and instructions below to work out
